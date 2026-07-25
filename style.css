@@ -1,0 +1,157 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --green: #22e06c;
+  --dark: #0b1a0f;
+  --card: rgba(10, 22, 14, 0.82);
+}
+
+html, body {
+  height: 100%;
+  background: var(--dark);
+  color: #eef7f0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#app { height: 100%; }
+
+/* ---------- start screen ---------- */
+#start-screen {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: radial-gradient(circle at 50% 20%, #14301c 0%, var(--dark) 70%);
+  overflow-y: auto;
+}
+
+.start-inner { max-width: 420px; text-align: center; }
+
+.logo { font-size: 72px; margin-bottom: 8px; }
+
+h1 { font-size: 34px; letter-spacing: -0.5px; margin-bottom: 10px; }
+
+.tagline { color: #a9c6b2; line-height: 1.5; margin-bottom: 28px; }
+
+#start-btn {
+  width: 100%;
+  padding: 18px;
+  font-size: 19px;
+  font-weight: 700;
+  color: #06230f;
+  background: var(--green);
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+}
+#start-btn:active { transform: scale(0.98); }
+#start-btn:disabled { opacity: 0.6; }
+
+.hint { font-size: 13px; color: #6e8a77; margin-top: 14px; }
+
+.how {
+  margin-top: 26px;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 14px;
+  padding: 14px 18px;
+}
+.how summary { cursor: pointer; font-weight: 600; color: #cfe6d5; }
+.how ul { margin: 12px 0 4px 18px; color: #a9c6b2; line-height: 1.7; font-size: 14px; }
+
+/* ---------- camera screen ---------- */
+#camera-screen { position: fixed; inset: 0; }
+
+#video, #overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#overlay { pointer-events: none; }
+
+#topbar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: calc(env(safe-area-inset-top, 0px) + 12px) 16px 10px;
+  background: linear-gradient(rgba(0,0,0,0.55), transparent);
+  font-weight: 700;
+}
+#fps { font-size: 12px; font-weight: 400; color: #b9d4c1; }
+
+#status-pill {
+  position: absolute;
+  top: calc(env(safe-area-inset-top, 0px) + 54px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 14px;
+  white-space: nowrap;
+  transition: background 0.3s;
+}
+#status-pill.found { background: rgba(20, 90, 45, 0.85); }
+
+/* ---------- score card ---------- */
+#scorecard {
+  position: absolute;
+  left: 12px; right: 12px;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 12px);
+  background: var(--card);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  padding: 14px 16px;
+}
+
+.score-head {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+#best-score { color: var(--green); }
+
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 5px 0;
+  font-size: 12px;
+}
+.bar-row > span { width: 74px; color: #b9d4c1; }
+
+.bar {
+  flex: 1;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.bar > div {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #189a4c, var(--green));
+  border-radius: 4px;
+  transition: width 0.25s ease;
+}
+
+#error-banner {
+  position: absolute;
+  bottom: 40%;
+  left: 12px; right: 12px;
+  background: rgba(160, 30, 30, 0.9);
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 13px;
+  text-align: center;
+}

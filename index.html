@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1a0f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Melon Scout 🍉</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+
+    <!-- Start screen -->
+    <div id="start-screen">
+      <div class="start-inner">
+        <div class="logo">🍉</div>
+        <h1>Melon Scout</h1>
+        <p class="tagline">Point your camera at the watermelon bin.<br>
+        I'll box every melon I see and crown the best pick.</p>
+        <button id="start-btn">Open Camera</button>
+        <p class="hint">Camera runs entirely on your phone — nothing is uploaded.</p>
+        <details class="how">
+          <summary>What makes a good watermelon?</summary>
+          <ul>
+            <li><b>Field spot</b> — a big creamy-yellow belly patch means it ripened on the ground. White or missing = picked too early.</li>
+            <li><b>Dull skin</b> — a matte rind is ripe; a shiny one is underripe.</li>
+            <li><b>Round shape</b> — rounder melons tend to be sweeter; long ovals more watery.</li>
+            <li><b>Strong stripes</b> — high contrast between dark and light stripes.</li>
+            <li><b>Webbing</b> — brown sugar-scarring means bees pollinated a sweet flower.</li>
+            <li><b>Size</b> — heavy for its size; bigger blobs score a little higher.</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+
+    <!-- Camera view -->
+    <div id="camera-screen" hidden>
+      <video id="video" autoplay muted playsinline></video>
+      <canvas id="overlay"></canvas>
+
+      <div id="topbar">
+        <span class="brand">🍉 Melon Scout</span>
+        <span id="fps"></span>
+      </div>
+
+      <div id="status-pill">Looking for watermelons…</div>
+
+      <!-- Best-pick breakdown card -->
+      <div id="scorecard" hidden>
+        <div class="score-head">
+          <span id="best-label">🏆 Best pick</span>
+          <span id="best-score">–</span>
+        </div>
+        <div class="bars">
+          <div class="bar-row"><span>Field spot</span><div class="bar"><div id="bar-fieldspot"></div></div></div>
+          <div class="bar-row"><span>Dull skin</span><div class="bar"><div id="bar-dullness"></div></div></div>
+          <div class="bar-row"><span>Roundness</span><div class="bar"><div id="bar-roundness"></div></div></div>
+          <div class="bar-row"><span>Stripes</span><div class="bar"><div id="bar-stripes"></div></div></div>
+          <div class="bar-row"><span>Webbing</span><div class="bar"><div id="bar-webbing"></div></div></div>
+          <div class="bar-row"><span>Size</span><div class="bar"><div id="bar-size"></div></div></div>
+        </div>
+      </div>
+
+      <div id="error-banner" hidden></div>
+    </div>
+  </div>
+
+  <script src="vision.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

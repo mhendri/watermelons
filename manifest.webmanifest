@@ -1,0 +1,18 @@
+{
+  "name": "Melon Scout",
+  "short_name": "MelonScout",
+  "description": "Point your camera at the watermelon bin and get told which one to pick.",
+  "start_url": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0b1a0f",
+  "theme_color": "#0b1a0f",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
